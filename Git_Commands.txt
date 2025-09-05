@@ -1,0 +1,20 @@
+
+This is the File for the basic git Commands
+
+Git Version
+git --version
+
+Git intilization
+git init
+
+Create a folder
+mkdir Folder_Name
+
+Git Clone existing repository
+git clone https://XXXXXXXXXXXXX
+
+Check Status of Git Files
+git status
+
+
+
