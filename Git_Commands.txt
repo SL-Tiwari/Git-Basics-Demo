@@ -1,20 +1,147 @@
 
 This is the File for the basic git Commands
 
-Git Version
+1. Git Version
 git --version
+--> git version 2.39.5 (Apple Git-154)
 
-Git intilization
+2. Git intilization
 git init
+--> Reinitialized existing Git repository in /Users/sahiltiwari/Git_Demo/Git-Basics-Demo/.git/
 
-Create a folder
+3. Create a folder
 mkdir Folder_Name
 
-Git Clone existing repository
+4. Git Clone existing repository
 git clone https://XXXXXXXXXXXXX
 
-Check Status of Git Files
+5. Check Status of Git Files
 git status
 
+--> On branch main
+    No commits yet
+    Untracked files:
+       (use "git add <file>..." to include in what will be committed)
+	.Git_Commands.txt.swp
+	Git_Commands.txt
+    nothing added to commit but untracked files present (use "git add" to track)
+
+
+********************Staging Part ****************** 
+
+6. Add a File to path (Staging Part)
+git add .  (. adds all the files in the existing folder)
+git add file.name (to add just a specific file)
+
+7. Create a new file in the folder
+echo "This is the new File Data" > File.name            (This will create a file with file.name and add "this is the new file data" in it)
+
+8. Save Work as a snapshort we use Git commit
+git commit -m "initial commit"              -m -> Message     "initial commit" is the message
+
+-->[main (root-commit) 7072acc] initial message
+   2 files changed, 20 insertions(+)
+   create mode 100644 .Git_Commands.txt.swp
+   create mode 100644 Git_Commands.txt
+
+
+9. If we want to skip staging for an existing file we can use
+git commit -a -m "quick message"
+--> [main 7ded60e] quick message
+    1 file changed, 0 insertions(+), 0 deletions(-)
+
+
+10. Remove files from git and also system
+git rm demo.txt
+git rm -f demo.txt   (force remove a file)
+
+11. Check commit history
+git log
+
+-->[main 7ded60e] quick message
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+(base) Git-Basics-Demo % git log
+commit 7ded60edc7393b1b45614da4cd5f3380a12230b9 (HEAD -> main)
+Author: SL-Tiwari <xxxxxxxxxxxxxxxxxxxxxxxxxx>
+Date:   xx xx xx xxxxxxxxxxx
+
+    quick message
+
+commit 7072acc1269019c0853a3f31bc46cda23578e35f
+Author: SL-Tiwari <xxxxxxxxxxxxxxxxxxxxxx>
+Date:   Fri Sep 5 19:55:19 2025 -0400
+
+12. Check git history in one line or compact view
+git log --oneline
+--> 7ded60e (HEAD -> main) quick message
+    7072acc initial message
+
+13. Detailed changes in git history
+git log -p
+
+14. Shows a text-based graph of commits and branches.
+git log --graph
+
+********************* branching part *********************
+15. Check the branch
+git branch
+--> *main
+
+16. Switch to a branch 
+git checkout dev-branch           (Switching to dev Branch) As there is no branch we got an error
+--> error: pathspec 'dev-branch' did not match any file(s) known to git
+ 
+17. Create and move to a  new branch name feature-logging
+git checkout feature-logging                         (We have created a new branch and moved to that branch)
+-->Switched to a new branch 'feature-logging'
+
+18. Check the branches again
+git branch
+-->*feature-logging
+    main 						(* indicates we are currently in that branch)
+
+
+19. Merge Branches 
+git merge feature-logging
+--> Already up to date.
+
+20. Delete a branch
+git branch -d branch_name                  (Cannot Delete the current branch as we are on it switch to main and then delete)
+--> error: Cannot delete branch 'feature-logging' checked out at '/Users/sahiltiwari/Git_Demo/Git-Basics-Demo' 
+
+21 Switch back to main Branch
+git checkout main
+--> M	.Git_Commands.txt.swp
+Switched to branch 'main'
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+22. Delete a branch that we created 
+git branch -d feature-logging        (we were able to delete it as we are on main branch now
+--> Deleted branch feature-logging (was 7ded60e).
+
+23. Switch to the main branch
+git switch main
+--> M	.Git_Commands.txt.swp
+Already on 'main'
+Your branch is based on 'origin/main', but the upstream is gone.
+
+Advance Commands
+24. Fix the last commit message use "amend"
+
+git commit --amend -m "message fixed"
+--> [main 759fdff] fixed the message
+ Date: Fri Sep 5 19:55:55 2025 -0400
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+25. Tag a version for a release
+git tag -a v1.0 -m "Version 1.0"
+
+26. View the tag
+git tag
+--> v1.0
+
+27. Push the file to the repository
+git push origin main
 
 
